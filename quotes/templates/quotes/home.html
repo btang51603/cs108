@@ -1,0 +1,13 @@
+
+<h1>Showing all quotes</h1>
+<!-- scriptlet code to display the value of the variable `quotes` 
+{{ quotes }}
+-->
+
+<ul>
+    {% for quote in quotes %}
+    <li>"{{quote.text}}" - {{quote.author}}<br>
+        <img src="{{quote.image_url}}" style="max-width: 400;">
+    </li>
+    {% endfor %}
+</ul>
