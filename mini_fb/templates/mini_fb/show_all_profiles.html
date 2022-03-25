@@ -1,0 +1,29 @@
+<!-- templates/show_all_profiles.html -->
+<html>
+    <h1>
+        MiniFacebook
+    </h1>
+    
+
+    <table border = 0>
+        {% for mini_fb in mini_fb %}
+        <thead>
+            <tr>
+                <th data-sortable="true">First Name</th>
+                <th data-sortable="true">Last Name</th>
+                <th data-sortable="true">Email</th>
+                <th data-sortable="true">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>"{{mini_fb.First_name}}"</td>
+                <td>"{{mini_fb.Last_name}}"</td>
+                <td>"{{mini_fb.Email}}"</td>
+                <td><img src="{{quote.image_url}}"></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</html>
