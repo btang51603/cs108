@@ -10,4 +10,10 @@
 <h2>
     {{Profile.email}}
 </h2>
+
+<ul>
+    {% for StatusMessage in Profile.get_status_messages %}
+        <li>{{StatusMessage.message}}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
