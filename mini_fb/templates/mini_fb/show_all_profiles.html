@@ -3,7 +3,9 @@
     <h1>
         MiniFacebook
     </h1>
-    
+    {% extends 'mini_fb/base.html' %}
+
+    {% block content %}
 
     <table border = 0>
         {% for Profile in All_Profiles %}
@@ -24,5 +26,6 @@
         </tbody>
         {% endfor %}
     </table>
-
+    
+    {% endblock %}
 </html>

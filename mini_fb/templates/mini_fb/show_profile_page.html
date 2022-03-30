@@ -1,3 +1,7 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
 <h1>{{Profile.first_name}} {{Profile.last_name}}</h1>
 <ul>
     <img src="{{Profile.image}}" style="max-width: 800;">
@@ -6,3 +10,4 @@
 <h2>
     {{Profile.email}}
 </h2>
+{% endblock %}
