@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import mini_fb
+from .models import Profile
 # Register your models here.
-admin.site.register(mini_fb)
+admin.site.register(Profile)

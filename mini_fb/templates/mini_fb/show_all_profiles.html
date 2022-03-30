@@ -6,21 +6,20 @@
     
 
     <table border = 0>
-        {% for mini_fb in mini_fb %}
+        {% for Profile in All_Profiles %}
         <thead>
             <tr>
-                <th data-sortable="true">First Name</th>
-                <th data-sortable="true">Last Name</th>
+                <th data-sortable="true"> Name</th>
                 <th data-sortable="true">Email</th>
                 <th data-sortable="true">Image</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>"{{mini_fb.First_name}}"</td>
-                <td>"{{mini_fb.Last_name}}"</td>
-                <td>"{{mini_fb.Email}}"</td>
-                <td><img src="{{quote.image_url}}"></td>
+                <!-- <td>"{{Profile.first_name}}" "{{Profile.last_name}}"</td> -->
+                <td><a href="{% url 'ShowProfilePage' Profile.pk %}">{{Profile.first_name}} {{Profile.last_name}}</a></td>
+                <td>"{{Profile.email}}"</td>
+                <td><img src="{{Profile.image_url}}" style="max-width: 400;"></td>
             </tr>
         </tbody>
         {% endfor %}

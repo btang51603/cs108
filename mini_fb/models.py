@@ -1,14 +1,16 @@
 from django.db import models
 
 # Create your models here.
-class mini_fb(models.Model):  
+class Profile(models.Model):  
     #other fields here
-    First_name = models.TextField(blank=True)
-    Last_name = models.TextField(blank=True)
-    Email = models.EmailField(blank=True)
-    Image= models.URLField(blank=True)
+    first_name = models.TextField(blank=True)
+    last_name = models.TextField(blank=True)
+    email = models.EmailField(blank=True)
+    image= models.URLField(blank=True)
 
 
     def __str__(self):  
-        return f"{self.First_name}-{self.Last_name}-{self.Email}-{self.Image}"
+        return f"{self.first_name}-{self.last_name}-{self.email}-{self.image}"
+
+
           
