@@ -19,3 +19,10 @@ class UpdateProfileForm(forms.ModelForm):
         '''additional data about this form'''
         model = Profile # which model to create
         fields = ['email','image'] # which fields to update
+
+class CreateStatusMessageForm(forms.ModelForm):
+    '''A form to update an existing Quote object.'''
+    class Meta:
+        '''additional data about this form'''
+        model = StatusMessage # which model to create
+        fields = ['message'] # which fields to update

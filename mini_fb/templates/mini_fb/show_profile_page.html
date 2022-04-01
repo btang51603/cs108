@@ -15,5 +15,21 @@
     {% for StatusMessage in Profile.get_status_messages %}
         <li>{{StatusMessage.message}}</li>
     {% endfor %}
+
+<h2><a href = '{% url "update_profile" profile.pk}'>Edit Profile</a> </h2>
+
+    <h1> Post Message</h1>
+    <form method="POST" action='{% url "post_status" profile.pk}'>
+        {% csrf_token %}
+        <table>
+            {{create_status_form.as_table}} <!-- table-style formatting -->
+            <tr>
+                <td></td> <!-- empty! -->
+                <td><input type="submit" value="Post Message"></td>
+            </tr>
+        </table>
+    </form>
+    {% endblock %}
+
 </ul>
-{% endblock %}
+

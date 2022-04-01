@@ -30,6 +30,9 @@ class StatusMessage(models.Model):
         '''Return a string representation of the status message'''
 
         return str(self.time_stamp) + self.message 
+    def get_absolute_url(self):
+        '''Return a URL to display this quote object.'''
+        return reverse("ShowProfilePage", kwargs={"pk": self.pk})
 
 
 
