@@ -46,13 +46,18 @@ class Quote(models.Model):
         return reverse("quote", kwargs={"pk": self.pk})
 
 class Image(models.Model):
-    '''Represent an image, which is associated with a Person.'''
+    '''Represent an image URL for a Person.'''
 
-    image_url = models.URLField(blank=True) # url as a string
-    person = models.ForeignKey('Person', on_delete=models.CASCADE)
+    image_url = models.URLField(blank=True)
+    image_file = models.ImageField(blank=True)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
 
     def __str__(self):
-        '''Return a string representation of this image.'''
+        '''Return the image url of this Image.'''
 
-        return self.image_url
-   
+        # if we have stored an actual image object:
+        if self.image_file:
+            return self.image_file.url
+        # otherwise, return the URL to an image stored elsewhere
+        else:
+            return self.image_url

@@ -50,7 +50,7 @@ def post_status_message(request, pk):
         # print(request.POST) # for debugging at the console
 
         # create the form object from the request's POST data
-        form = CreateStatusMessageForm(request.POST or None)
+        form = CreateStatusMessageForm(request.POST or None, request.FILES or None) 
 
         if form.is_valid():
 
@@ -67,5 +67,5 @@ def post_status_message(request, pk):
             status_message.save()
 
     # redirect the user to the show_profile_page view
-    url = reverse('show_profile_page', kwargs={'pk': pk})
+    url = reverse('ShowProfilePage', kwargs={'pk': pk})
     return redirect(url)

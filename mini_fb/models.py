@@ -26,10 +26,11 @@ class StatusMessage(models.Model):
     time_stamp = models.DateTimeField(auto_now_add=True)
     message = models.TextField(blank=True)
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    image_file = models.ImageField(blank=True)
     def __str__(self):
         '''Return a string representation of the status message'''
 
-        return str(self.time_stamp) + self.message 
+        return str(self.time_stamp) + self.message + str(self.image_file)
     def get_absolute_url(self):
         '''Return a URL to display this quote object.'''
         return reverse("ShowProfilePage", kwargs={"pk": self.pk})

@@ -12,14 +12,18 @@
 </h2>
 
 <ul>
-    {% for StatusMessage in Profile.get_status_messages %}
-        <li>{{StatusMessage.message}}</li>
+    {% for status_message in Profile.get_status_messages %}
+        <li>{{status_message.message}}</li>
+   
+    {% if status_message.image_file %}
+    <img src='{{status_message.image_file.url}}' style='max-width: 600;'>
+    {% endif %}
     {% endfor %}
 
-<h2><a href = '{% url "update_profile" profile.pk}'>Edit Profile</a> </h2>
+<h2><a href = '{% url "update_profile" Profile.pk %}'>Edit Profile</a> </h2>
 
     <h1> Post Message</h1>
-    <form method="POST" action='{% url "post_status" profile.pk}'>
+    <form method="POST" action='{% url "post_status" Profile.pk %}' enctype="multipart/form-data">
         {% csrf_token %}
         <table>
             {{create_status_form.as_table}} <!-- table-style formatting -->
@@ -28,6 +32,7 @@
                 <td><input type="submit" value="Post Message"></td>
             </tr>
         </table>
+  
     </form>
     {% endblock %}
 
