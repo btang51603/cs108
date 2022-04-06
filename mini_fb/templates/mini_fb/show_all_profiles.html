@@ -19,7 +19,7 @@
         <tbody>
             <tr>
                 <!-- <td>"{{Profile.first_name}}" "{{Profile.last_name}}"</td> -->
-                <td><a href="{% url 'ShowProfilePage' Profile.pk %}">{{Profile.first_name}} {{Profile.last_name}}</a></td>
+                <td><a href="{% url 'show_profile_page' Profile.pk %}">{{Profile.first_name}} {{Profile.last_name}}</a></td>
                 <td>"{{Profile.email}}"</td>
                 <td><img src="{{Profile.image_url}}" style="max-width: 400;"></td>
             </tr>

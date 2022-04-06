@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 # Create your views here.
-from .models import Profile
+from .models import Profile, StatusMessage
 from django.views.generic import ListView,DetailView,CreateView, UpdateView
 from .forms import CreateProfileForm, UpdateProfileForm, CreateStatusMessageForm
+from django.views.generic.edit import DeleteView
 class ShowAllProfilesView(ListView):
     '''Create a subclass of ListView to display all quotes.'''
     model= Profile
@@ -67,5 +68,43 @@ def post_status_message(request, pk):
             status_message.save()
 
     # redirect the user to the show_profile_page view
-    url = reverse('ShowProfilePage', kwargs={'pk': pk})
+    url = reverse('show_profile_page', kwargs={'pk': pk})
     return redirect(url)
+
+class DeleteStatusMessageView(DeleteView):
+    '''A view to delete a quote and remove it from the database.'''
+    template_name = "mini_fb/delete_status_form.html"
+    queryset = StatusMessage.objects.all()
+
+    def get_success_url(self):
+        
+        st_msg = StatusMessage.objects.get(pk=self.kwargs['status_pk'])
+        profile_pk = self.kwargs['profile_pk']
+        return reverse('show_profile_page', kwargs={'pk':profile_pk})
+    
+    def get_context_data(self, **kwargs):
+        '''Return the context data (a dictionary) to be used in the template.'''
+
+        # obtain the default context data (a dictionary) from the superclass; 
+        # this will include the Profile record to display for this page view
+        context = super(DeleteStatusMessageView, self).get_context_data(**kwargs)
+        # create a new CreateStatusMessageForm, and add it into the context dictionary
+        st_msg = StatusMessage.objects.get(pk=self.kwargs['status_pk'])
+        context['status_message'] = st_msg
+        # return this context dictionary
+        return context
+    
+    def get_object(self):
+        profile_pk = self.kwargs['profile_pk']
+        status_pk = self.kwargs['status_pk']
+        st_msg = StatusMessage.objects.get(pk=self.kwargs['status_pk'])
+
+        return st_msg
+
+
+
+        
+
+        
+    
+

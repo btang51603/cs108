@@ -14,7 +14,8 @@
 <ul>
     {% for status_message in Profile.get_status_messages %}
         <li>{{status_message.message}}</li>
-   
+        <a href = "{% url 'delete_status' profile_pk=Profile.pk status_pk=status_message.pk %}"> Delete Post </a>
+
     {% if status_message.image_file %}
     <img src='{{status_message.image_file.url}}' style='max-width: 600;'>
     {% endif %}
