@@ -12,6 +12,28 @@
 </h2>
 
 <ul>
+    {% if Profile.get_friends %}
+    {% for friends in Profile.get_friends %}
+    <table>
+        <tr>
+            <td>{{friends.first_name}}</td>
+            <td>{{friends.last_name}}</td>
+            <td>{{friends.email}}</td>
+            <td>
+                {% if friends.image %}
+                <img src = '{{friends.image_file.url}}' style = 'max-width: 400;'>
+                {% endif %}
+
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+    {% else %}
+    <li>{{Profile.first_name}} doesn't have any friends.</li>
+    {% endif %}
+</ul>
+
+<ul>
     {% for status_message in Profile.get_status_messages %}
         <li>{{status_message.message}}</li>
         <a href = "{% url 'delete_status' profile_pk=Profile.pk status_pk=status_message.pk %}"> Delete Post </a>

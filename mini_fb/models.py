@@ -8,6 +8,7 @@ class Profile(models.Model):
     last_name = models.TextField(blank=True)
     email = models.EmailField(blank=True)
     image= models.URLField(blank=True)
+    friends = models.ManyToManyField("self")
 
 
     def __str__(self):  
@@ -21,6 +22,8 @@ class Profile(models.Model):
     def get_absolute_url(self):
         '''Return a URL to display this quote object.'''
         return reverse("ShowProfilePage", kwargs={"pk": self.pk})
+    def get_friends(self):
+        return self.friends.all()
 
 class StatusMessage(models.Model):
     time_stamp = models.DateTimeField(auto_now_add=True)
