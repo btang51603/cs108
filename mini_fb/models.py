@@ -24,6 +24,9 @@ class Profile(models.Model):
         return reverse("ShowProfilePage", kwargs={"pk": self.pk})
     def get_friends(self):
         return self.friends.all()
+    def get_news_feed(self):
+        news = StatusMessage.objects.all().order_by("-timestamp")
+        return news
 
 class StatusMessage(models.Model):
     time_stamp = models.DateTimeField(auto_now_add=True)

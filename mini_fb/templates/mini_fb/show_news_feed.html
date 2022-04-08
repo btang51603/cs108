@@ -1,0 +1,22 @@
+<ul>
+    <h1>{{Profile.first_name}}'s news feed</h1>
+   <table>
+    {% for news in Profile.get_news_feed %}
+    <tr>
+        <td>{{news.time_stamp}}</td>
+        <td><a href ="{% url 'show_profile_page' profile.pk}">{{Profile.first_name}} {{Profile.last_name}}</a></td>
+
+        <td>
+            {% if news.image %}
+            <img src = '{{news.image.url}}' style="max-width: 300;">
+            {% endif %}
+        </td>
+
+        <td>
+            {{news.message}}
+        </td>
+    </tr>
+    {% endfor %}
+   </table>
+
+</ul>

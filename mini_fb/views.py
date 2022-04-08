@@ -101,7 +101,10 @@ class DeleteStatusMessageView(DeleteView):
 
         return st_msg
 
-
+class ShowNewsFeedView(DetailView):
+    model= Profile
+    template_name = "mini_fb/show_news_feed.html"
+    context_object_name = "Profile"
 
         
 
