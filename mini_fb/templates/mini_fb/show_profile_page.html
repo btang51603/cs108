@@ -1,7 +1,7 @@
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
-
+<h1><a href = '{% url "news_feed" Profile.pk %}'>{{Profile.first_name}}'s News Feed</a> </h1>
 <h1>{{Profile.first_name}} {{Profile.last_name}}</h1>
 <ul>
     <img src="{{Profile.image}}" style="max-width: 800;">

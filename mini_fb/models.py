@@ -25,7 +25,7 @@ class Profile(models.Model):
     def get_friends(self):
         return self.friends.all()
     def get_news_feed(self):
-        news = StatusMessage.objects.all().order_by("-timestamp")
+        news = StatusMessage.objects.filter(profile__in = self.friends.all()).order_by("-time_stamp")
         return news
 
 class StatusMessage(models.Model):
