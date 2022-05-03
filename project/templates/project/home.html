@@ -1,0 +1,18 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h3>About Cards and Rentals</h3>
+<ul>Cards and Rentals is dedicated towards Magic The Gathering players who play Modern but don't have the wallet to buy a deck or aren't sure if they want to commit to buying a deck. Cards and Rentals helps send decks to players for players to use for a limited time a much cheaper price using our card inventory or to help players new to the Modern format to get a taste of it.</ul>
+<h3>All Decks</h3>
+<ul>
+    {% for deck in decks %}
+     <table>
+         <tr>
+             <td>{{deck.title}}</td>
+             <td><img src="{{deck.image.url}}" style="max-width: 200;"></td>
+             <td><a href="{% url 'show_deck' deck.pk %}">View Deck</a></td>
+         </tr>
+     </table>
+    {% endfor %}
+{% endblock %}
+</ul>

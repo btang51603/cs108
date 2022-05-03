@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Cards and Rentals</title>
+    </head>
+    <h1>Cards and Rentals</h1>
+    <body>
+        <header>
+            <a href="{% url 'home' %}">Main Page</a> |
+            <a href="{% url 'create_profile' %}">Create New Profile</a> | 
+            <a href="{% url 'create_rental' %}">Rent A Deck!!</a> |
+            <a href="{% url 'show_all_rentals' %}">Show All Rentals</a>
+        </header>
+        <hr>
+    </body>
+    {% block content %}
+    {% endblock %}
+</html>

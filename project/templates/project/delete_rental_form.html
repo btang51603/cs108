@@ -1,0 +1,15 @@
+<h3>Are you sure you want to return this deck?</h3>
+
+{{rental}}
+<p>
+
+</p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <input type='submit' name="yes" value="yes">
+</form>
+<form method='GET' action="{% url 'show_all_rentals' %}">
+    {% csrf_token %}
+    <input type='submit' name="no" value="no">
+</form>

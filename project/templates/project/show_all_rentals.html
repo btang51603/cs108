@@ -1,0 +1,19 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h1> All Decks being Rented</h1>
+<ul>
+   
+    {% for rental in rentals %}
+     <table>
+         <tr>
+             <td>{{rental.deck.title}} | </td>
+             <td>{{rental.profile}} | </td>
+             <td>{{rental.date_rented}} | </td>
+             <td>{{rental.date_return}} | </td>
+             <td> <a href = "{% url 'delete_rental' rental_pk=rental.pk %}"> Return Deck </a></td>
+         </tr>
+     </table>
+    {% endfor %}
+    {% endblock %}
+</ul>

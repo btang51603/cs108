@@ -1,0 +1,25 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<h2><a href = "{% url 'show_profile_page' Profile.pk %}">Back to {{Profile.first_name}}'s page</a></h2>
+<h1>Friend Suggestions for {{Profile.first_name}}</h1>
+
+<ul>
+    {% for friends in Profile.get_friend_suggestions %}
+    <table>
+        <tr>
+            <td><img src="{{friends.image_url}}" style="max-width: 400;"></td>
+            <td>"{{friends.first_name}}" "{{friends.last_name}}"</td>
+            <td>
+                <form method = "POST" enctype = "multipart/form-data" action="{% url 'add_friend' profile_pk=Profile.pk friend_pk=friends.pk %}">
+                    {% csrf_token %}
+                    <input type = "submit" value="Add Friend">
+
+                </form>
+                
+            </td>
+        </tr>
+    </table>
+</ul>
+{% endfor %}
+{% endblock %}

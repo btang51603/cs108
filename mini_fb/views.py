@@ -3,7 +3,7 @@ from django.urls import reverse
 # Create your views here.
 from .models import Profile, StatusMessage
 from django.views.generic import ListView,DetailView,CreateView, UpdateView
-from .forms import CreateProfileForm, UpdateProfileForm, CreateStatusMessageForm
+from .forms import CreateProfileForm, UpdateProfileForm
 from django.views.generic.edit import DeleteView
 class ShowAllProfilesView(ListView):
     '''Create a subclass of ListView to display all quotes.'''
@@ -106,7 +106,20 @@ class ShowNewsFeedView(DetailView):
     template_name = "mini_fb/show_news_feed.html"
     context_object_name = "Profile"
 
-        
+class ShowPossibleFriendsView(DetailView):
+    model = Profile
+    template_name = "mini_fb/show_possible_friends.html"
+    context_object_name = "Profile"
+    context_variable_name =  "friends"
+
+def add_friend(request, profile_pk, friend_pk):
+    profile = Profile.objects.get(pk = profile_pk)
+    friends = Profile.objects.get(pk = friends_pk)
+    profile.friends.add()
+    friends.save()
+    
+    return reverse('show_profile_page', kwargs={'pk':profile_pk})
+
 
         
     

@@ -1,0 +1,23 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h1>
+    {{decks.title}}
+</h1>
+<h2> <img src="{{deck.image}}" style="max-width: 800;"></h2>
+<h2>By {{decks.author}}</h2>
+<h3>Renting Price: ${{decks.price}}</h3>
+<h4>Deck Contents</h4>
+<ul>
+    {{decks.contents}}
+</ul>
+<h2>
+    How to use this deck:
+</h2>
+<ul>
+
+    {{decks.gameplan}}
+</ul>
+
+{% endblock %}
